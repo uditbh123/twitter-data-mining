@@ -52,6 +52,43 @@ This project demonstrates how to collect tweets using Python and the Twitter API
 - Prepare project for GitHub upload with proper `.gitignore`.
 
 ---
+### 2025-12-09
+
+#### Implemented
+- Created `process_tweets.py` to read saved tweets and tokenize their text.
+- Used **regex and NLTK** to handle mentions, hashtags, URLs, emoticons, and words.
+- Tokenized tweets stored in a **cumulative JSON file** (`data/tokenized_tweets.json`) that appends new tokenized tweets without overwriting previous data.
+- Verified all tweets processed correctly and displayed sample tokenized output.
+
+#### Key Features
+- **Persistent storage:** Tokenized tweets are appended to a single file to maintain history.
+- **Robust tokenization:** Regex handles URLs, hashtags, mentions, numbers, words, and emoticons.
+- **Error handling:** Skips malformed lines, ensures JSON loads safely.
+- **Reproducible workflow:** Can run collection and processing scripts repeatedly without losing previous data.
+
+#### Major Problems Faced and Solutions
+
+1. **Malformed JSON errors**  
+   - Error: `JSONDecodeError: Expecting value / Extra data` when trying to read `tweets.json`.
+   - Cause: Tweets were saved as a full JSON array, but the previous processing script expected **one tweet per line**.
+   - Solution: Updated `process_tweets.py` to read the array and iterate through each tweet properly, handling all malformed lines safely.
+
+2. **ModuleNotFoundError for NLTK**  
+   - Error: `No module named 'nltk'`.
+   - Cause: NLTK not installed in Python environment or script using a different interpreter.
+   - Solution: Installed NLTK via `pip install nltk` and ensured the correct Python interpreter was used.
+
+3. **Cumulative storage for tokenized tweets**  
+   - Problem: Running the script repeatedly overwrote previous tokenized tweets.
+   - Solution: Implemented logic to append new tokenized tweets to `data/tokenized_tweets.json`, preserving history.
+
+#### Outcome
+- Successfully processed and tokenized all tweets.
+- Stored cumulative tokenized tweets for further analysis.
+- Scripts now robust against malformed input, encoding errors, duplicated and repeated runs.
+
+---
+
 
 ## Project Structure
 
