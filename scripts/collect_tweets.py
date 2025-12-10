@@ -31,7 +31,7 @@ file_path = os.path.join(data_folder, "tweets.json")
 
 #load existing tweets if file exists
 if os.path.exists(file_path):
-    with open(file_path, "r", encoding="utf") as f:
+    with open(file_path, "r", encoding="utf-8") as f:
         try:
             tweets_data = json.load(f)
         except json.JSONDecoderError:

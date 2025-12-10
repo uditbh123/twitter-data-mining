@@ -6,7 +6,7 @@ from nltk.tokenize import word_tokenize
 
 # File paths
 
-DATA_FILE = "data/tweets.json"
+DATA_FILE = "data/cleaned_tweets.json"
 TOKENIZED_FILE = "data/tokenized_tweets.json"
 
 # Regex for tokenizing 

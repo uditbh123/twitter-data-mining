@@ -10,3 +10,5 @@ if not bearer_token:
     raise ValueError("BEARER_TOKEN not found. Check your .env file and path!")
 
 print("Bearer token loaded successfully")
+
+
