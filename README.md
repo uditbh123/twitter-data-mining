@@ -87,6 +87,61 @@ This project demonstrates how to collect tweets using Python and the Twitter API
 - Stored cumulative tokenized tweets for further analysis.
 - Scripts now robust against malformed input, encoding errors, duplicated and repeated runs.
 
+### 2025-12-10
+
+#### Implemented
+- Created **`clean_tweets.py`** to **clean raw tweets** stored in `data/tweets.json`.  
+  - Cleaning includes:  
+    - Converting text to **lowercase**  
+    - Removing **URLs, mentions (@username), hashtags (#tag), retweet markers (RT)**  
+    - Removing **punctuation, numbers, and extra whitespace**  
+  - Cleaned tweets are saved in **`data/cleaned_tweets.json`** with both **original** and **cleaned text**.  
+
+- Updated **`process_tweets.py`** to **tokenize cleaned tweets** from `data/cleaned_tweets.json` instead of raw tweets.  
+  - Tokenized tweets are saved in **`data/tokenized_tweets.json`** as a **cumulative file**, appending only new tweets to maintain history.  
+
+- Created **`sentiment_analysis.py`** to perform **sentiment analysis**:  
+  - Used **TextBlob** to calculate **polarity** (positive/negative/neutral) and **subjectivity**.  
+  - Sentiment results are saved in **`data/sentiment_tweets.json`** along with tweet **ID, cleaned text, and creation date**.  
+  - Data is ready for further **visualization or filtering by sentiment**.
+
+#### Key Features
+- **Pipeline workflow:** **Collect → Clean → Tokenize → Sentiment analysis → Ready for visualization/NLP**.  
+- **Persistent storage:** Avoids overwriting previous tokenized or sentiment data.  
+- **Cleaned text preserved:** **Original** and **cleaned text** stored together.  
+- **Robust tokenization:** Handles **mentions, hashtags, URLs, words, numbers, and emoticons**.  
+- **Safe execution:** Scripts **auto-create missing files** to prevent crashes on first run.  
+- **Sentiment ready:** Automatic **polarity and subjectivity scores** for each tweet.
+
+#### Major Problems Faced and Solutions
+1. **Missing input files**  
+   - Error: `FileNotFoundError` when running `clean_tweets.py` without `tweets.json`.  
+   - Cause: Raw tweets not collected yet.  
+   - Solution: Added logic to **create an empty `tweets.json` automatically** and instruct user to run `collect_tweets.py` first.
+
+2. **Encoding issues**  
+   - Problem: Scripts previously failed with `LookupError: unknown encoding: uft-8` or JSON errors.  
+   - Cause: Typo in encoding and inconsistent file formats.  
+   - Solution: Corrected all scripts to use **UTF-8** consistently.
+
+3. **Tokenizing cleaned tweets**  
+   - Problem: Earlier tokenization used raw tweets including noise like URLs, hashtags, and mentions.  
+   - Solution: Tokenized **cleaned tweets** only, improving the quality of tokens.
+
+4. **Maintaining cumulative tokenized and sentiment data**  
+   - Problem: Repeated runs risked overwriting previous tokenized or sentiment files.  
+   - Solution: Implemented **ID-based duplicate checks** to append only new tweets.
+
+5. **Non-English or messy text in sentiment analysis**  
+   - Problem: Tweets with emojis, Arabic text, or mixed characters could mislead **TextBlob**.  
+   - Solution: Cleaning removed URLs, mentions, hashtags, extra symbols, and punctuation, improving **sentiment detection accuracy**.
+
+#### Outcome
+- All tweets are **cleaned, tokenized, and analyzed for sentiment**.  
+- Pipeline is **robust, reproducible, and ready** for NLP, visualization, or dashboard creation.  
+- Scripts handle **missing files, malformed JSON, duplicates, and messy text** gracefully, making the workflow **recruiter-ready**.  
+
+
 ---
 
 
