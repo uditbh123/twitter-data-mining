@@ -144,6 +144,40 @@ This project demonstrates how to collect tweets using Python and the Twitter API
 
 ---
 
+### 2025-12-12
+
+#### Implemented
+- Created **`analyze_sentiment.py`** to **summarize sentiment data** from `data/tweets_sentiment.json`.  
+  - Calculates **sentiment distribution** (counts and percentages for positive, neutral, negative).  
+  - Extracts **top words per sentiment** from cleaned text to identify common patterns.  
+  - Saves a **JSON report** (`data/sentiment_report.json`) for further analysis or visualization.  
+  - Prints **summary tables in the terminal** for quick inspection.
+
+#### Key Features
+- **Aggregated insights:** Quickly see how many tweets fall into each sentiment category.  
+- **Top words per sentiment:** Helps understand which words appear most in positive, neutral, and negative tweets.  
+- **Persistent output:** Saves results to a JSON file for reproducibility and sharing.  
+- **Error-safe execution:** Handles missing sentiment files or empty datasets gracefully.  
+- **Ready for visualization or ML:** Report can be used for plotting charts or feeding into models.
+
+#### Major Problems Faced and Solutions
+1. **Top words calculation bug**  
+   - Problem: Earlier code returned empty lists or wrong sentiment labels.  
+   - Solution: Fixed **looping and label handling**, correctly mapped top words to `positive`, `neutral`, and `negative`.  
+
+2. **Output overwriting concern**  
+   - Problem: Each run of the script could overwrite the previous report.  
+   - Solution: Output report **always updates**, but can be modified to use timestamps or versioning if historical snapshots are needed.  
+
+3. **Sentiment label consistency**  
+   - Problem: Some labels were misspelled (e.g., `neutal`).  
+   - Solution: Corrected all scripts to use consistent labels: `positive`, `neutral`, `negative`.  
+
+#### Outcome
+- Sentiment report is **complete, accurate, and ready for visualization or analysis**.  
+- Pipeline is now fully end-to-end: **Collect → Clean → Tokenize → Sentiment → Summary report**.  
+- Can now **analyze trends, build dashboards, or train ML models** on the sentiment data.
+
 
 ## Project Structure
 
