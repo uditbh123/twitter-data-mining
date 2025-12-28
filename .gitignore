@@ -1,4 +1,12 @@
+# Bytecode
 __pycache__/
 *.pyc
+
+# Environment variables
 .env
-data/
+
+# Ignore JSON data outputs
+data/*.json
+
+# Ignore generated visualizations
+visualization/
