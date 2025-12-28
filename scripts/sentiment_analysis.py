@@ -28,7 +28,7 @@ for tweet in cleaned_tweets:
     sentiment_scores = sia.polarity_scores(text)
 
 # Classify sentiment
-    if sentiment_scores["compound"] >= 0.5:
+    if sentiment_scores["compound"] >= 0.05:
         sentiment = "positive"
     elif sentiment_scores["compound"] <= -0.05:
         sentiment = "negative"
