@@ -178,6 +178,36 @@ This project demonstrates how to collect tweets using Python and the Twitter API
 - Pipeline is now fully end-to-end: **Collect → Clean → Tokenize → Sentiment → Summary report**.  
 - Can now **analyze trends, build dashboards, or train ML models** on the sentiment data.
 
+### 2025-12-28
+
+#### Implemented
+- Created **`visualize_sentiment.py`**:  
+  - Generates bar charts for positive, neutral, negative tweets.  
+  - Saves PNGs with **dynamic date-based filenames** to avoid overwriting.  
+  - Uses `metadata.json` to track previous visualizations.  
+  - Annotates bars with tweet counts.  
+
+- Updated **`visualize_insights.py`**:  
+  - Creates multiple visualizations: sentiment percentages, distribution over time, top words.  
+  - Saves outputs in **`visualization/`** with reproducible filenames.  
+
+- Created **`pipeline_runner.py`**:  
+  - Automates the full workflow: Collect → Clean → Tokenize → Sentiment → Analyze → Visualize.  
+  - Ensures all new tweets processed, cumulative data maintained, visualizations updated automatically.
+
+#### Key Features
+- **End-to-end automation**: Single script runs full pipeline.  
+- **Dynamic visualizations**: Versioned PNGs with date and index.  
+- **Metadata tracking**: Prevents duplicate plots.  
+- **Tweet count in charts**: Clear indication of number of tweets visualized.  
+- **Reproducible workflow**: Data, visualizations, and reports are stored separately for sharing and analysis.  
+
+#### Outcome
+- All new and existing tweets processed, analyzed, and visualized.  
+- Pipeline is **robust, fully automated, and ready for demonstration or ML/NLP tasks**.  
+
+---
 
 ## Project Structure
+
 
